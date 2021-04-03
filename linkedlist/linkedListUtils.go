@@ -1,6 +1,8 @@
 package linkedlist
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //Node ...
 type Node struct {
@@ -27,9 +29,10 @@ func (n *Node) InsertAtLast(data interface{}) {
 //PrintList ...
 func (n *Node) PrintList() {
 	for n != nil {
-		fmt.Printf("%v\n", n.Data)
+		fmt.Printf("%v --> ", n.Data)
 		n = n.Next
 	}
+	fmt.Print("nil \n")
 }
 
 //InsertAtFirst ...
@@ -83,3 +86,51 @@ func (n *Node) FindKthLast(k int) *Node {
 	}
 	return first
 }
+
+//ReverseLinkedListNonRecursive ...
+func (head *Node) ReverseLinkedListNonRecursive() *Node {
+	var prev *Node
+	current := head
+	for current != nil {
+		nextNode := current.Next
+		current.Next = prev
+		prev = current
+		current = nextNode
+	}
+	return prev
+}
+
+//DeleteNodeFromLinkedList ...
+func (head *Node) DeleteNodeFromLinkedList(data int) *Node {
+	current := head
+	if current.Data == data {
+		return current.Next
+	}
+	prev := current
+	current = current.Next
+	for current != nil {
+		nextNode := current.Next
+		if current.Data == data {
+			prev.Next = nextNode
+			return head
+		}
+		prev = current
+		current = current.Next
+	}
+	return head
+}
+
+// PrintLinnkedListInReverseOrder ...
+func (head *Node)PrintLinnkedListInReverseOrder(){
+	if head == nil{
+		return
+	}
+	if head.Next == nil{
+		fmt.Printf("nil --> %v -->", head.Data)
+		return
+	}
+	head.Next.PrintLinnkedListInReverseOrder()
+	fmt.Printf("%v -->", head.Data)
+}
+
+
