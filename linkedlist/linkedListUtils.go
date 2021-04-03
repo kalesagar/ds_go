@@ -133,4 +133,57 @@ func (head *Node)PrintLinnkedListInReverseOrder(){
 	fmt.Printf("%v -->", head.Data)
 }
 
+//CompareTwoLinkedList ...
+func CompareTwoLinkedList(head1 *Node, head2 *Node) bool{
+	if head1 == nil && head2 == nil{
+		return true
+	}
+	for (head1 != nil && head2 != nil){
+		if head1.Data != head2.Data{
+			return false
+		}
+		head1 = head1.Next
+		head2 = head2.Next
+	}
+	if head1 == nil && head2 == nil{
+		return true
+	}
+	return false
+}
 
+//MergeSortedLinkedLists ...
+func MergeSortedLinkedLists(head1 *Node, head2 *Node) *Node{
+	if head1 == nil{
+		return head2
+	}
+	if head2 == nil{
+		return head1
+	}
+	var head *Node
+	if head1.Data.(int) < head2.Data.(int){
+		head = head1
+		head1 = head1.Next
+	}else{
+		head = head2
+		head2 = head2.Next
+	}
+	realHead := head
+	for head1 != nil && head2 != nil{
+		if head1.Data.(int) < head2.Data.(int){
+			head.Next = head1
+			head = head1
+			head1 = head1.Next
+		}else{
+			head.Next = head2
+			head = head2
+			head2 = head2.Next
+		}
+	}
+	if head1 == nil{
+		head.Next = head2
+	}
+	if head2 == nil{
+		head.Next = head1
+	}
+	return realHead
+}
