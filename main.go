@@ -37,6 +37,18 @@ func main() {
 	fmt.Println()
 	newLL := linkedlist.MergeSortedLinkedLists(llist, llist1)
 	newLL.PrintList()
+	newLL.InsertAtLast(55)
+	newLL.PrintList()
+	newLL.DeleteDuplicateNodesFromSortedLinkedList()
+	newLL.PrintList()
+	// *** create cycle in linked list ***
+	tmp := newLL.InsertAtLast(56)
+	tmp.Next = newLL.Next
+	fmt.Println(newLL.CycleDetectionInLinkedList())
+	// *** removing cycle from linked list ***
+	tmp.Next = nil
+	fmt.Println(newLL.CycleDetectionInLinkedList())
+	
 	// fmt.Println(llist.GetLength())
 	// fmt.Println(llist.GetMiddleOfList().Data)
 	// if kthlast := llist.FindKthLast(2); kthlast != nil {

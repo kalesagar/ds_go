@@ -17,13 +17,14 @@ func CreateNode(data interface{}) *Node {
 }
 
 //InsertAtLast ...
-func (n *Node) InsertAtLast(data interface{}) {
+func (n *Node) InsertAtLast(data interface{}) *Node{
 	newNode := CreateNode(data)
 	tmp := n
 	for tmp.Next != nil {
 		tmp = tmp.Next
 	}
 	tmp.Next = newNode
+	return newNode
 }
 
 //PrintList ...
@@ -121,11 +122,11 @@ func (head *Node) DeleteNodeFromLinkedList(data int) *Node {
 }
 
 // PrintLinnkedListInReverseOrder ...
-func (head *Node)PrintLinnkedListInReverseOrder(){
-	if head == nil{
+func (head *Node) PrintLinnkedListInReverseOrder() {
+	if head == nil {
 		return
 	}
-	if head.Next == nil{
+	if head.Next == nil {
 		fmt.Printf("nil --> %v -->", head.Data)
 		return
 	}
@@ -134,56 +135,89 @@ func (head *Node)PrintLinnkedListInReverseOrder(){
 }
 
 //CompareTwoLinkedList ...
-func CompareTwoLinkedList(head1 *Node, head2 *Node) bool{
-	if head1 == nil && head2 == nil{
+func CompareTwoLinkedList(head1 *Node, head2 *Node) bool {
+	if head1 == nil && head2 == nil {
 		return true
 	}
-	for (head1 != nil && head2 != nil){
-		if head1.Data != head2.Data{
+	for head1 != nil && head2 != nil {
+		if head1.Data != head2.Data {
 			return false
 		}
 		head1 = head1.Next
 		head2 = head2.Next
 	}
-	if head1 == nil && head2 == nil{
+	if head1 == nil && head2 == nil {
 		return true
 	}
 	return false
 }
 
 //MergeSortedLinkedLists ...
-func MergeSortedLinkedLists(head1 *Node, head2 *Node) *Node{
-	if head1 == nil{
+func MergeSortedLinkedLists(head1 *Node, head2 *Node) *Node {
+	if head1 == nil {
 		return head2
 	}
-	if head2 == nil{
+	if head2 == nil {
 		return head1
 	}
 	var head *Node
-	if head1.Data.(int) < head2.Data.(int){
+	if head1.Data.(int) < head2.Data.(int) {
 		head = head1
 		head1 = head1.Next
-	}else{
+	} else {
 		head = head2
 		head2 = head2.Next
 	}
 	realHead := head
-	for head1 != nil && head2 != nil{
-		if head1.Data.(int) < head2.Data.(int){
+	for head1 != nil && head2 != nil {
+		if head1.Data.(int) < head2.Data.(int) {
 			head.Next = head1
 			head = head1
 			head1 = head1.Next
-		}else{
+		} else {
 			head.Next = head2
 			head = head2
 			head2 = head2.Next
 		}
 	}
-	if head1 == nil{
+	if head1 == nil {
 		head.Next = head2
 	}
-	if head2 == nil{
+	if head2 == nil {
 		head.Next = head1
 	}
 	return realHead
 }
+
+//DeleteDuplicateNodesFromSortedLinkedList ...
+func (head *Node) DeleteDuplicateNodesFromSortedLinkedList() *Node {
+	current := head
+	for current != nil {
+		if current.Data == current.Next.Data {
+			current.Next = current.Next.Next
+		}
+		current = current.Next
+	}
+	return head
+}
+
+//CycleDetectionInLinkedList ...
+func (head *Node) CycleDetectionInLinkedList() bool{
+	if head ==nil || head.Next == nil{
+		return false
+	}
+	first := head
+	second := head.Next.Next
+	for first != nil && second != nil{
+		if first == second{
+			return true
+		}
+		first = first.Next
+		if second.Next != nil{
+			second = second.Next.Next
+		}
+	}
+	return false
+}
+
+
