@@ -17,7 +17,7 @@ func CreateNode(data interface{}) *Node {
 }
 
 //InsertAtLast ...
-func (n *Node) InsertAtLast(data interface{}) *Node{
+func (n *Node) InsertAtLast(data interface{}) *Node {
 	newNode := CreateNode(data)
 	tmp := n
 	for tmp.Next != nil {
@@ -202,22 +202,66 @@ func (head *Node) DeleteDuplicateNodesFromSortedLinkedList() *Node {
 }
 
 //CycleDetectionInLinkedList ...
-func (head *Node) CycleDetectionInLinkedList() bool{
-	if head ==nil || head.Next == nil{
+func (head *Node) CycleDetectionInLinkedList() bool {
+	if head == nil || head.Next == nil {
 		return false
 	}
 	first := head
 	second := head.Next.Next
-	for first != nil && second != nil{
-		if first == second{
+	for first != nil && second != nil {
+		if first == second {
 			return true
 		}
 		first = first.Next
-		if second.Next != nil{
+		if second.Next != nil {
 			second = second.Next.Next
 		}
 	}
 	return false
 }
 
+//DeleteDuplicateNodesFromUnSortedLinkedList ...
+func (head *Node) DeleteDuplicateNodesFromUnSortedLinkedList() *Node {
+	ptr := head
+	if head == nil || head.Next == nil {
+		return head
+	}
+	for ptr != nil && ptr.Next != nil {
+		nextNode := ptr.Next
+		prev := ptr
+		for nextNode != nil {
+			if nextNode.Data == ptr.Data {
+				prev.Next = nextNode.Next
+				break
+			}
+			prev = nextNode
+			nextNode = nextNode.Next
+		}
+		ptr = ptr.Next
+	}
+	return head
+}
 
+//DeleteDuplicateNodesFromUnSortedLinkedListUsingMap ...
+func (head *Node) DeleteDuplicateNodesFromUnSortedLinkedListUsingMap() *Node {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	ptr := head
+	nodeMap := map[int]struct{}{
+		ptr.Data.(int): struct{}{},
+	}
+	prev := ptr
+	ptr = ptr.Next
+	for ptr != nil {
+		_, ok := nodeMap[ptr.Data.(int)]
+		if ok {
+			prev.Next = ptr.Next
+		} else {
+			nodeMap[ptr.Data.(int)] = struct{}{}
+		}
+		prev = ptr
+		ptr = ptr.Next
+	}
+	return head
+}

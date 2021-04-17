@@ -1,7 +1,8 @@
 package main
 
 import (
-	"ds_go/linkedlist"
+	//"ds_go/linkedlist"
+	"ds_go/programs"
 	//"ds_go/queue"
 	//"ds_go/programs"
 	"fmt"
@@ -10,45 +11,51 @@ import (
 func main() {
 	fmt.Println("Started Main go routine....")
 	//-------------------Linked List------------------------
-	llist := linkedlist.CreateNode(10)
-	llist.InsertAtLast(15)
-	llist = llist.InsertAtFirst(5)
-	llist.InsertAtLast(20)
-	llist = llist.InsertAtFirst(1)
-	llist.InsertAtLast(30)
-	llist.InsertAtLast(40)
-	llist.PrintList()
+	// llist := linkedlist.CreateNode(10)
+	// llist.InsertAtLast(15)
+	// llist = llist.InsertAtFirst(5)
+	// llist.InsertAtLast(20)
+	// llist = llist.InsertAtFirst(1)
+	// llist.InsertAtLast(30)
+	// llist.InsertAtLast(40)
+	// llist.PrintList()
 	// llist = llist.ReverseLinkedListNonRecursive()
 	// llist.PrintList()
 	// llist = llist.DeleteNodeFromLinkedList(15)
 	// llist.PrintList()
 	// llist.PrintLinnkedListInReverseOrder()
 
-	llist1 := linkedlist.CreateNode(11)
-	llist1.InsertAtLast(17)
-	llist1 = llist1.InsertAtFirst(5)
-	llist1.InsertAtLast(22)
-	llist1 = llist1.InsertAtFirst(1)
-	llist1.InsertAtLast(33)
-	llist1.InsertAtLast(45)
-	llist1.InsertAtLast(55)
-	llist1.PrintList()
-	fmt.Println(linkedlist.CompareTwoLinkedList(llist, llist1))
-	fmt.Println()
-	newLL := linkedlist.MergeSortedLinkedLists(llist, llist1)
-	newLL.PrintList()
-	newLL.InsertAtLast(55)
-	newLL.PrintList()
-	newLL.DeleteDuplicateNodesFromSortedLinkedList()
-	newLL.PrintList()
+	// llist1 := linkedlist.CreateNode(11)
+	// llist1.InsertAtLast(17)
+	// llist1 = llist1.InsertAtFirst(5)
+	// llist1.InsertAtLast(22)
+	// llist1 = llist1.InsertAtFirst(1)
+	// llist1 = llist1.InsertAtFirst(1)
+	// llist1.InsertAtLast(33)
+	// llist1.InsertAtLast(5)
+	// llist1.InsertAtLast(45)
+	// llist1.InsertAtLast(55)
+	// llist1.InsertAtLast(55)
+	// llist1.PrintList()
+	//llist1 = llist1.DeleteDuplicateNodesFromUnSortedLinkedList()
+	// llist1 = llist1.DeleteDuplicateNodesFromUnSortedLinkedList()
+	// llist1.PrintList()
+	// fmt.Println(linkedlist.CompareTwoLinkedList(llist, llist1))
+	// fmt.Println()
+	// newLL := linkedlist.MergeSortedLinkedLists(llist, llist1)
+	// newLL.PrintList()
+	// newLL.InsertAtLast(55)
+	// newLL.PrintList()
+	// newLL.DeleteDuplicateNodesFromSortedLinkedList()
+	// newLL.PrintList()
 	// *** create cycle in linked list ***
-	tmp := newLL.InsertAtLast(56)
-	tmp.Next = newLL.Next
-	fmt.Println(newLL.CycleDetectionInLinkedList())
+	// tmp := newLL.InsertAtLast(56)
+	// tmp.Next = newLL.Next
+	// fmt.Println(newLL.CycleDetectionInLinkedList())
 	// *** removing cycle from linked list ***
-	tmp.Next = nil
-	fmt.Println(newLL.CycleDetectionInLinkedList())
-	
+	// tmp.Next = nil
+	// fmt.Println(newLL.CycleDetectionInLinkedList())
+	// ***
 	// fmt.Println(llist.GetLength())
 	// fmt.Println(llist.GetMiddleOfList().Data)
 	// if kthlast := llist.FindKthLast(2); kthlast != nil {
@@ -78,4 +85,8 @@ func main() {
 	// fmt.Println(largeNo)
 
 	// programs.PairsOfSum([]int{10, 20, 5, 15, 7, 8}, 25)
+
+	//------ print even and odd numbers using two go routines
+
+	programs.PrintOddNumbersUsingGoRoutines()
 }
