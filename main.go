@@ -88,5 +88,12 @@ func main() {
 
 	//------ print even and odd numbers using two go routines
 
-	programs.PrintOddNumbersUsingGoRoutines()
+	//programs.PrintOddNumbersUsingGoRoutines()
+
+	//----- Check string is pangram ----
+	fmt.Println(programs.IsPangram("The quick brown fox jumps over the lazy dog")) //true
+	fmt.Println(programs.IsPangram("The quick brown fox jumps over the dog")) //false
+	//--- MissingCharacterToPangramString ---
+	programs.MissingCharacterToPangramString("The quick brown fox jumps over the lazy dog")
+	programs.MissingCharacterToPangramString("The quick brown fox jumps over the dog")
 }
