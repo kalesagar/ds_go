@@ -1,10 +1,9 @@
 package main
 
 import (
-	//"ds_go/linkedlist"
-	"ds_go/programs"
 	//"ds_go/queue"
 	//"ds_go/programs"
+	"ds_go/programs"
 	"fmt"
 )
 
@@ -91,9 +90,21 @@ func main() {
 	//programs.PrintOddNumbersUsingGoRoutines()
 
 	//----- Check string is pangram ----
-	fmt.Println(programs.IsPangram("The quick brown fox jumps over the lazy dog")) //true
-	fmt.Println(programs.IsPangram("The quick brown fox jumps over the dog")) //false
+	// fmt.Println(programs.IsPangram("The quick brown fox jumps over the lazy dog")) //true
+	// fmt.Println(programs.IsPangram("The quick brown fox jumps over the dog")) //false
 	//--- MissingCharacterToPangramString ---
-	programs.MissingCharacterToPangramString("The quick brown fox jumps over the lazy dog")
-	programs.MissingCharacterToPangramString("The quick brown fox jumps over the dog")
+	// programs.MissingCharacterToPangramString("The quick brown fox jumps over the lazy dog")
+	// programs.MissingCharacterToPangramString("The quick brown fox jumps over the dog")
+	//--- Remove Punctuations From String ---
+	//programs.RemovePunctuationsFromString("%welcome' to @geeksforgeek<s")
+	// fmt.Println(programs.FindVowels("sagar pandurang Kale"))
+	// fmt.Println(programs.FindVowels("Yograj Shisode"))
+	//fmt.Println(programs.MergeSlices([]string{"potatoes","tomatoes","brinjal"}, []string{"oranges","apples"}))
+	// fmt.Println(programs.CheckPanlindrome("abacedbce"))
+	// fmt.Println(programs.CheckPanlindrome("xxxxzzy"))
+	// fmt.Println(programs.CheckPanlindrome("abab"))
+	// fmt.Println(programs.CheckPanlindrome("aaa"))
+	// fmt.Println(programs.CheckPanlindrome("sdhjk"))
+	//fmt.Println(programs.CheckPanlindrome("ghjjkk"))
+	programs.PrintNNumbers(0,100)
 }

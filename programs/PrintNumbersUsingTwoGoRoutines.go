@@ -3,6 +3,7 @@ package programs
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func PrintOddNumbersUsingGoRoutines() {
@@ -19,7 +20,8 @@ func PrintOddNumbersUsingGoRoutines() {
 func printOdds(ch chan struct{}, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for i := 1; i < 10; i = i + 2 {
-		<- ch
+		time.Sleep(1 * time.Millisecond)
+		<-ch
 		fmt.Println(i)
 		ch <- struct{}{}
 	}
@@ -29,7 +31,7 @@ func printOdds(ch chan struct{}, wg *sync.WaitGroup) {
 func printEvens(ch chan struct{}, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for i := 2; i <= 10; i = i + 2 {
-		<- ch
+		<-ch
 		fmt.Println(i)
 		if i != 10 {
 			ch <- struct{}{}
