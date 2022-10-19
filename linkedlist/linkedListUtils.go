@@ -126,10 +126,6 @@ func (head *Node) PrintLinnkedListInReverseOrder() {
 	if head == nil {
 		return
 	}
-	if head.Next == nil {
-		fmt.Printf("nil --> %v -->", head.Data)
-		return
-	}
 	head.Next.PrintLinnkedListInReverseOrder()
 	fmt.Printf("%v -->", head.Data)
 }
