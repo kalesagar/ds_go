@@ -1,0 +1,8 @@
+name: Check 
+on: push
+jobs: 
+  build: 
+    runs-on: master 
+    steps: 
+      - uses: actions/checkout@v2 
+      - run: echo "This is a check"
